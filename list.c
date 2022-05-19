@@ -11,13 +11,7 @@
 */
 
 Node* node_init_default( void ) {
-    Node* tempNode = (Node*)malloc(sizeof(Node));
-    if (!tempNode) {
-        printf("Node init default failed to malloc\n");
-        exit(1);
-    }
-    tempNode->data = 0;
-    tempNode->next = NULL;
+    Node* tempNode = NULL;
     return tempNode;
 }
 Node* node_init(int data) {
@@ -45,7 +39,7 @@ List* list_init_default( void ) {
         printf("List init node default failed to malloc\n");
         exit(1);
     }
-    tempList->head = node_init_default();
+    tempList->head = NULL;
     return tempList;
 }
 List* list_init(int data) {
@@ -77,24 +71,31 @@ void list_destroy(List** phlist) {
     free(*phlist);
     *phlist = NULL;
 }
-void list_append(List** plist, int data) {
-    Node* temp = (*plist)->head;
+void list_append(List* plist, int data) {
+    if (!plist->head) {
+        plist->head = node_init(data);
+        return;
+    }
+    Node* temp = plist->head;
     while(temp->next != NULL) {
         temp = temp->next;
     }
     temp->next = node_init(data);
 }
 
-void list_push(List** phlist, int data) {
-    Node* temp = (*phlist)->head;
+void list_push(List* plist, int data) {
+    if (!plist->head) {
+        plist->head = node_init(data);
+    }
+    Node* temp = plist->head;
     Node* new =  node_init(data);
     new->next = temp;
     temp = new;
-    (*phlist)->head = temp;
+    plist->head = temp;
 }
 
-void list_print_debug(List** phlist) {
-    Node* temp = (*phlist)->head;
+void list_print_debug(List* plist) {
+    Node* temp = plist->head;
     int i = 0;
     printf("Linked list {\n");
     while(temp->next != NULL) {
@@ -106,18 +107,49 @@ void list_print_debug(List** phlist) {
     printf("}\n");
 }
 
-int list_peak_front(List** phlist) {
-    if (!(*phlist)->head) {
+int list_peak_front(List* plist) {
+    if (!plist->head) {
         printf("list peak front null node");
         exit(1);
     }
-    return (*phlist)->head->data;
+    return plist->head->data;
 }
 
-int list_peak_back(List** phlist) {
-    Node* temp = (*phlist)->head;
+int list_peak_back(List* plist) {
+    Node* temp = plist->head;
     while(temp->next != NULL) {
         temp = temp->next;
     }
     return temp->data;
+}
+
+void list_reverse(List* plist) {
+    Node* prev = NULL;
+    Node* curr = plist->head;
+    Node* next = NULL;
+
+    while (curr != NULL) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    plist->head = prev;
+}
+
+List* list_copy(List* plist) {
+    List* retList = list_init_default();
+    Node* curr = plist->head;
+    while (curr->next) {
+        list_append(retList, curr->data);
+        curr = curr->next;
+    }
+    list_append(retList, curr->data);
+    return retList;
+}
+
+List* list_reverse_copy(List* plist) {
+    List* retList = list_copy(plist);
+    list_reverse(retList);
+    return retList;
 }

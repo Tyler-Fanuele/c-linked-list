@@ -1,12 +1,12 @@
 CC = gcc
 CFLAGS = -Werror -Wall -pedantic
 
-all : driver test
+all : driver
 
-test : test.o
+test : test.o list.o
 	$(CC) $(CFLAGS) -o test test.o
 
-test.o :  test.c
+test.o : test.c list.h
 	$(CC) $(CFLAGS) -c test.c
 
 driver : main.o list.o
@@ -20,6 +20,8 @@ list.o : list.c list.h
 
 run: all
 	leaks --atExit -- ./driver
+run_test: all
+	leaks --atExit -- ./test
 
 clean : 
 	rm -f *.o driver test

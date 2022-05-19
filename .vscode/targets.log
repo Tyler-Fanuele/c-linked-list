@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Wed May 18 20:36:08 2022
+# Make data base, printed on Wed May 18 22:40:22 2022
 
 # Variables
 
@@ -24,6 +24,7 @@ VSCODE_LOG_NATIVE = false
 PLATFORMIO_IDE = 2.4.3
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
+ 
 # automatic
 @F = $(notdir $@)
 # makefile
@@ -38,7 +39,6 @@ _ = /usr/bin/make
 CFLAGS = -Werror -Wall -pedantic
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
- 
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
@@ -152,7 +152,7 @@ LANG = C
 # environment
 VSCODE_PID = 30135
 # variable set hash-table stats:
-# Load=69/1024=7%, Rehash=0, Collisions=3/97=3%
+# Load=69/1024=7%, Rehash=0, Collisions=3/93=3%
 
 # Pattern-specific Variable Values
 
@@ -160,9 +160,9 @@ VSCODE_PID = 30135
 
 # Directories
 
-# . (device 16777223, inode 8858690): 12 files, no impossibilities.
+# . (device 16777223, inode 8858690): 15 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -172,26 +172,29 @@ VSCODE_PID = 30135
 
 # Not a target:
 list.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-05-18 22:39:24
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-all: driver test
+all: driver
 #  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 driver: main.o list.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-05-18 22:39:27
 #  File has been updated.
-#  Needs to be updated (-q is set).
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/4=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 13):
 	$(CC) $(CFLAGS) -o driver main.o list.o
 	
@@ -199,17 +202,17 @@ driver: main.o list.o
 # Not a target:
 main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-18 20:33:29
+#  Last modified 2022-05-18 22:39:12
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
  
+# variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 list.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-18 20:25:12
+#  Last modified 2022-05-18 22:35:14
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -224,13 +227,13 @@ list.h:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-18 20:35:15
+#  Last modified 2022-05-18 22:39:39
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-test.o: test.c
+test.o: test.c list.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -238,12 +241,20 @@ test.o: test.c
 	$(CC) $(CFLAGS) -c test.c
 	
 
-test: test.o
+test: test.o list.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 7):
 	$(CC) $(CFLAGS) -o test test.o
+	
+
+run_test: all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 24):
+	leaks --atExit -- ./test
 	
 
 # Not a target:
@@ -270,48 +281,34 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 25):
+#  commands to execute (from `Makefile', line 27):
 	rm -f *.o driver test
 	
 
 list.o: list.c list.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-05-18 22:39:27
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 19):
 	$(CC) $(CFLAGS) -c list.c
 	
 
 main.o: main.c list.h
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `'
-#  File does not exist.
+#  Last modified 2022-05-18 22:39:17
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := main.o
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := main.c list.h
-# automatic
-# | := 
-# automatic
-# < := main.c
-# automatic
-# ^ := main.c list.h
-# automatic
-# ? := main.c list.h
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/12=8%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 16):
 	$(CC) $(CFLAGS) -c main.c
 	
 
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/40=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/42=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -323,6 +320,6 @@ main.o: main.c list.h
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed May 18 20:36:08 2022
+# Finished Make data base on Wed May 18 22:40:22 2022
 
  
