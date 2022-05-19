@@ -1,7 +1,7 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/tyler/Git/c-linked-list'
-gcc -Werror -Wall -pedantic -c main.c
  
+gcc -Werror -Wall -pedantic -c main.c
 gcc -Werror -Wall -pedantic -c list.c
 gcc -Werror -Wall -pedantic -o driver main.o list.o
 gcc -Werror -Wall -pedantic -c test.c

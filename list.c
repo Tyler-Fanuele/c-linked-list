@@ -77,10 +77,47 @@ void list_destroy(List** phlist) {
     free(*phlist);
     *phlist = NULL;
 }
-void list_push(List** plist, int data) {
+void list_append(List** plist, int data) {
     Node* temp = (*plist)->head;
     while(temp->next != NULL) {
         temp = temp->next;
     }
     temp->next = node_init(data);
+}
+
+void list_push(List** phlist, int data) {
+    Node* temp = (*phlist)->head;
+    Node* new =  node_init(data);
+    new->next = temp;
+    temp = new;
+    (*phlist)->head = temp;
+}
+
+void list_print_debug(List** phlist) {
+    Node* temp = (*phlist)->head;
+    int i = 0;
+    printf("Linked list {\n");
+    while(temp->next != NULL) {
+        printf("Node[%d] -> %d\n", i, temp->data);
+        temp = temp->next;
+        i++;
+    }
+    printf("Node[%d] -> %d\n", i, temp->data);
+    printf("}\n");
+}
+
+int list_peak_front(List** phlist) {
+    if (!(*phlist)->head) {
+        printf("list peak front null node");
+        exit(1);
+    }
+    return (*phlist)->head->data;
+}
+
+int list_peak_back(List** phlist) {
+    Node* temp = (*phlist)->head;
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+    return temp->data;
 }

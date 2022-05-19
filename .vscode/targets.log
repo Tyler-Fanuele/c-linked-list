@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Wed May 18 20:35:06 2022
+# Make data base, printed on Wed May 18 20:36:08 2022
 
 # Variables
 
@@ -17,7 +17,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
- 
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
@@ -39,6 +38,7 @@ _ = /usr/bin/make
 CFLAGS = -Werror -Wall -pedantic
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
+ 
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
@@ -166,7 +166,6 @@ VSCODE_PID = 30135
 
 # Implicit Rules
 
- 
 # No implicit rules.
 
 # Files
@@ -204,6 +203,7 @@ main.c:
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
+ 
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
@@ -224,7 +224,7 @@ list.h:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-18 20:34:09
+#  Last modified 2022-05-18 20:35:15
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -271,7 +271,7 @@ clean:
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 25):
-	rm -f *.o driver
+	rm -f *.o driver test
 	
 
 list.o: list.c list.h
@@ -322,8 +322,7 @@ main.o: main.c list.h
 # # of strcache buffers: 1
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
- 
 
-# Finished Make data base on Wed May 18 20:35:06 2022
+# Finished Make data base on Wed May 18 20:36:08 2022
 
  
