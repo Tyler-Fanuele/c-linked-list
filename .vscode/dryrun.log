@@ -1,6 +1,9 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/tyler/Git/c-linked-list'
-make: Nothing to be done for `all'.
+gcc -Werror -Wall -pedantic -c main.c
  
+gcc -Werror -Wall -pedantic -c list.c
+gcc -Werror -Wall -pedantic -c node.c
+gcc -Werror -Wall -pedantic -o driver main.o list.o node.o
 make: Leaving directory `/Users/tyler/Git/c-linked-list'
  

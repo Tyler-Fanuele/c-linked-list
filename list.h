@@ -1,10 +1,6 @@
 #ifndef LIST_H
 #define LIST_H
-typedef struct node Node;
-struct node {
-    int data;
-    Node* next;
-};
+#include "node.h"
 
 
 struct list {
@@ -12,13 +8,7 @@ struct list {
 };
 typedef struct list List;
 
-/*
-    Node def
-*/
 
-Node* node_init_default( void );
-Node* node_init(int data);
-void node_destroy(Node** phnode);
 
 /*
     List def
